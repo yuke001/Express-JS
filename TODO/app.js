@@ -124,4 +124,17 @@ app.post("/api/v1/todo", async (req, res) => {
   }
 });
 
+// GET-method for read todo
+
+// endpoint - /api/v1/todo
+
+app.get("/api/v1/todo", async (req, res) => {
+  try {
+    let todos = await Todo.find();
+    res.status(200).send(todos);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 export default app;
