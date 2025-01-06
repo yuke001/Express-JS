@@ -1,67 +1,6 @@
-// import express from "express";
-
-// // app instance or object
-
-// let app = express();
-
-// // app.use(
-// //   "/home",
-// //   (req, res, next) => {
-// //     console.log("This is my first middleware");
-// //     next();
-// //   },
-// //   (req, res, next) => {
-// //     console.log("This is my second middleware");
-// //     next();
-// //   }
-// // );
-
-// app.get("/", (req, res, next) => {
-//   res.send("Hello Yuke");
-// });
-
-// app.get(
-//   "/home",
-//   (req, res, next) => {
-//     console.log("This is my 1 middleware");
-//     next();
-//   },
-//   (req, res, next) => {
-//     console.log("This is my 2 middleware");
-//     next();
-//   },
-
-//   (req, res, next) => {
-//     res.send("Home Page");
-//   }
-// );
-
-// app.get(
-//   "/about",
-//   (req, res, next) => {
-//     console.log("This is my 3 middleware");
-//     next();
-//   },
-//   (req, res, next) => {
-//     console.log("This is my 4 middleware");
-//     next();
-//   },
-
-//   (req, res, next) => {
-//     res.send("About Page");
-//   }
-// );
-
-// export default app;
-
-// ----------------------------------------------------------------------------------------------------------------------------
-
-// 02 - jan - 2025
-
-// to connect to database
-
 import express from "express";
 import mongoose from "mongoose";
+import todoRouter from "./routes/todoRoutes.js";
 
 let app = express();
 
@@ -80,23 +19,23 @@ db();
 
 // model
 
-let todoSchema = new mongoose.Schema(
-  {
-    todoName: {
-      type: String,
-    },
+// let todoSchema = new mongoose.Schema(
+//   {
+//     todoName: {
+//       type: String,
+//     },
 
-    isCompleted: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+//     isCompleted: {
+//       type: Boolean,
+//       default: false,
+//     },
+//   },
+//   {
+//     timestamps: true,
+//   }
+// );
 
-let Todo = mongoose.model("todo", todoSchema);
+// let Todo = mongoose.model("todo", todoSchema);
 
 // middleware
 
@@ -104,37 +43,44 @@ let Todo = mongoose.model("todo", todoSchema);
 
 app.use(express.json());
 
+// router instance
+app.use("/api/v1/todo", todoRouter);
+
+// ----------------------------- POST --------------------------------------------
+
 // POST-method for create  todo
 
 // endpoint - /api/v1/todo
 
-app.post("/api/v1/todo", async (req, res) => {
-  let { todoName } = req.body;
+// app.post("/api/v1/todo", async (req, res) => {
+//   let { todoName } = req.body;
 
-  try {
-    if (!todoName) {
-      return res.status(400).send("todo name can't be empty");
-    }
-    let newTodo = await Todo.create({
-      todoName: todoName,
-    });
-    res.status(201).send(newTodo);
-  } catch (error) {
-    res.status(401).send(error.message);
-  }
-});
+//   try {
+//     if (!todoName) {
+//       return res.status(400).send("todo name can't be empty");
+//     }
+//     let newTodo = await Todo.create({
+//       todoName: todoName,
+//     });
+//     res.status(201).send(newTodo);
+//   } catch (error) {
+//     res.status(401).send(error.message);
+//   }
+// });
+
+// ----------------------------- GET --------------------------------------------
 
 // GET-method for read todo
 
 // endpoint - /api/v1/todo
 
-app.get("/api/v1/todo", async (req, res) => {
-  try {
-    let todos = await Todo.find();
-    res.status(200).send(todos);
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-});
+// app.get("/api/v1/todo", async (req, res) => {
+//   try {
+//     let todos = await Todo.find();
+//     res.status(200).send(todos);
+//   } catch (error) {
+//     res.status(400).send(error.message);
+//   }
+// });
 
 export default app;
