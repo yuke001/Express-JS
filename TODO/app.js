@@ -1,21 +1,15 @@
 import express from "express";
-import mongoose from "mongoose";
 import todoRouter from "./routes/todoRoutes.js";
+import db from "./config/db.js";
 
 let app = express();
 
-// db connection
+db;
 
-async function db() {
-  try {
-    let conn = await mongoose.connect("mongodb://127.0.0.1:27017/todoDB");
-    console.log(`db is connected to ${conn.connection.host}`);
-  } catch (error) {
-    console.log(error.message);
-  }
-}
+app.use(express.json());
+app.use("/api/v1/todo", todoRouter);
 
-db();
+export default app;
 
 // model
 
@@ -41,10 +35,10 @@ db();
 
 // processes the incoming request json data
 
-app.use(express.json());
+// app.use(express.json());
 
 // router instance
-app.use("/api/v1/todo", todoRouter);
+// app.use("/api/v1/todo", todoRouter);
 
 // ----------------------------- POST --------------------------------------------
 
@@ -83,4 +77,4 @@ app.use("/api/v1/todo", todoRouter);
 //   }
 // });
 
-export default app;
+// export default app;
