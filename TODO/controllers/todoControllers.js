@@ -3,6 +3,8 @@ import Todo from "../models/Todo.js";
 const postTodo = async (req, res) => {
   let { todoName } = req.body;
 
+
+
   try {
     if (!todoName) {
       return res.status(400).send("todo name can't be empty");
@@ -16,6 +18,8 @@ const postTodo = async (req, res) => {
   }
 };
 
+
+
 const getTodos = async (req, res) => {
   try {
     let todos = await Todo.find();
@@ -25,6 +29,8 @@ const getTodos = async (req, res) => {
   }
 };
 
+
+
 const getTodo = async (req, res) => {
   try {
     let todos = await Todo.findById();
@@ -33,6 +39,9 @@ const getTodo = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
+
+
+
 
 const putTodo = async (req, res) => {
   let { id } = req.params;
@@ -49,6 +58,8 @@ const putTodo = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
+
+
 
 const deleteTodo = async (req, res) => {
   let { id } = req.params;
