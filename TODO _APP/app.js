@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/api/v1/todo", todoRouter);
 
 app.get("/home", (req, res, next) => {
-  res.render("home", { name: "Yuke" });
+  res.render("home", { name: "Yuke", number: 8072262283 , place:"Bangalore"});
 });
 
 export default app;
