@@ -47,13 +47,15 @@ const getTodo = async (req, res) => {
 
 const putTodo = async (req, res) => {
   let { id } = req.params;
-  let { todoName, isCompleted } = req.body;
+  // let { todoName, isCompleted } = req.body;
 
   try {
+    const todo = await Todo.findById(id);
+    
     let updatedTodo = await Todo.findByIdAndUpdate(
       id,
       // { todoName, isCompleted },
-      {isCompleted: !Todo.isCompleted},
+      {isCompleted: !todo.isCompleted},
       { new: true }
     );
     // res.redirect("/api/v1/todo");
