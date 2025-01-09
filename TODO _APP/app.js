@@ -2,6 +2,8 @@ import express from "express";
 import todoRouter from "./routes/todoRoutes.js";
 import db from "./config/db.js";
 
+import methodOverrride from "method-override";
+
 let app = express();
 
 // db connection
@@ -11,14 +13,24 @@ db;
 app.set("view engine", "ejs");
 
 //processing incoming json data
-app.use(express.json());
+// app.use(express.json());
+
+// processing incoming form data
+app.use(express.urlencoded({ extended: true }));
+
+// method override
+app.use(methodOverrride("_method"));
+
+// routers
 app.use("/api/v1/todo", todoRouter);
 
 app.get("/home", (req, res, next) => {
-  res.render("home", { name: "Yuke", number: 8072262283 , place:"Bangalore"});
+  res.render("home", { name: "Yuke", number: 8072262283, place: "Bangalore" });
 });
 
 export default app;
+
+
 
 // model
 
