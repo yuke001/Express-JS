@@ -28,7 +28,14 @@
           <% todos.forEach(todo => { %>
           <tr>
             <td><%= todo.todoName %></td>
-            <td><button>done</button></td>
+            <!-- <td><button>done</button></td> -->
+
+            <td>
+              <form action="/api/v1/todo/<%= todo._id  %>?_method=PUT" method="post">
+                <input type="hidden" name="isCompleted" value="<%= todo.isCompleted %>" />
+                <button type="submit">DONE</button>
+              </form>
+            </td>
             <td>
                 <form action="/api/v1/todo/<%= todo._id %>?_method=DELETE" method="post">
                 <button type="submit">DELETE</button>

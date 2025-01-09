@@ -24,9 +24,9 @@ app.use(methodOverrride("_method"));
 // routers
 app.use("/api/v1/todo", todoRouter);
 
-app.get("/home", (req, res, next) => {
-  res.render("home", { name: "Yuke", number: 8072262283, place: "Bangalore" });
-});
+// app.get("/home", (req, res, next) => {
+//   res.render("home", { name: "Yuke", number: 8072262283, place: "Bangalore" });
+// });
 
 export default app;
 

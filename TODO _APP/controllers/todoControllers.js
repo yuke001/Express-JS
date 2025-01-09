@@ -52,9 +52,11 @@ const putTodo = async (req, res) => {
   try {
     let updatedTodo = await Todo.findByIdAndUpdate(
       id,
-      { todoName, isCompleted },
+      // { todoName, isCompleted },
+      {isCompleted: !Todo.isCompleted},
       { new: true }
     );
+    // res.redirect("/api/v1/todo");
     res.status(200).send(updatedTodo);
   } catch (error) {
     res.status(400).send(error.message);
