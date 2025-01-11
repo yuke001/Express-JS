@@ -45,25 +45,27 @@ const getTodo = async (req, res) => {
   }
 };
 
+
+// update 
+
 const putTodo = async (req, res) => {
   let { id } = req.params;
-  // let { todoName, isCompleted } = req.body;
 
   try {
-    const todo = await Todo.findById(id);
     
-    let updatedTodo = await Todo.findByIdAndUpdate(
+     await Todo.findByIdAndUpdate(
       id,
-      // { todoName, isCompleted },
-      {isCompleted: !todo.isCompleted},
-      { new: true }
+      {isCompleted: req.body.isCompleted}
+      // { new: true }
     );
-    // res.redirect("/api/v1/todo");
-    res.status(200).send(updatedTodo);
+    res.redirect("/api/v1/todo");
+    // res.status(200).send(updatedTodo);
   } catch (error) {
     res.status(400).send(error.message);
   }
 };
+
+// -----------------------
 
 const deleteTodo = async (req, res) => {
   let { id } = req.params;

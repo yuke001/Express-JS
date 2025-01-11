@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+ 
   </head>
   <body>
 
@@ -27,15 +29,28 @@
         
           <% todos.forEach(todo => { %>
           <tr>
+            
+
             <td><%= todo.todoName %></td>
             <!-- <td><button>done</button></td> -->
 
+            <!-- update isCompleted -->
             <td>
-              <form action="/api/v1/todo/<%= todo._id  %>?_method=PUT" method="post">
-                <input type="hidden" name="isCompleted" value="<%= todo.isCompleted %>" />
-                <button type="submit">DONE</button>
+              <form action="/api/v1/todo/<%= todo._id %>?_method=PUT" method="post">
+
+                <input type="hidden" name="isCompleted" value=<%=!(todo.isCompleted)%> />
+
+                <% if (todo.isCompleted) { %>
+                  <button type="submit">Completed</button>
+                 
+                <% } else {%>
+                    <button type="submit">Not completed</button>
+                <%  }%>
+                
               </form>
             </td>
+
+            <!-- delete  -->
             <td>
                 <form action="/api/v1/todo/<%= todo._id %>?_method=DELETE" method="post">
                 <button type="submit">DELETE</button>
