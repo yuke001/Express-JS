@@ -16,8 +16,7 @@ To start the application, run the following command:
 ```bash
 npm start
 ```
-
-The application will be running on `http://localhost:3000`.
+ running on `http://localhost:3000`.
 
 ### Endpoints
 
