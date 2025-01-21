@@ -1,5 +1,7 @@
 import express from "express";
 import todoRouter from "./routes/todoRoutes.js";
+import userRouter from "./routes/userRoutes.js";
+
 import db from "./config/db.js";
 
 import methodOverrride from "method-override";
@@ -26,7 +28,7 @@ app.use(express.static("public"));
 
 // routers
 app.use("/api/v1/todo", todoRouter);
-
+app.use("/api/v1/user", userRouter);
 // app.get("/home", (req, res, next) => {
 //   res.render("home", { name: "Yuke", number: 8072262283, place: "Bangalore" });
 // });
