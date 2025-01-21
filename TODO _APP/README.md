@@ -1,69 +1,44 @@
-# Express JS TODO Application
+# TODO App
 
-This is a simple TODO application built with Express.js.
+## Overview
+TODO App is a simple and user-friendly task management application. It allows users to register, log in, and manage their tasks efficiently. The app provides features like task creation, updating, and deletion, along with user authentication for secure access.
 
-## Getting Started
+## Features
+- User registration and login with authentication.
+- Add, edit, and delete tasks.
+- Secure user authentication using tokens.
+- Responsive design with EJS templates.
 
-### Prerequisites
-
-- Node.js
-- npm (Node Package Manager)
-
-### Running the Application
-
-To start the application, run the following command:
-
-```bash
-npm start
+## Project Structure
 ```
- running on `http://localhost:3000`.
+TODO_APP/
+├── README.md
+├── app.js
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── server.js
+├── config/
+│   └── db.js
+├── controllers/
+│   ├── todoControllers.js
+│   └── userControllers.js
+├── middlewares/
+│   └── auth.js
+├── models/
+│   ├── Todo.js
+│   └── User.js
+├── public/
+│   └── css/
+│       └── style.css
+├── routes/
+│   ├── todoRoutes.js
+│   └── userRoutes.js
+├── utils/
+│   └── generateToken.js
+└── views/
+    ├── home.ejs
+    ├── login.ejs
+    └── register.ejs
+```
 
-### Endpoints
-
-- `GET /` - Returns "Hello Yuke"
-- `GET /home` - Logs middleware messages and returns "Home Page"
-- `GET /about` - Logs middleware messages and returns "About Page"
-
-
-
-
-
-
-
-Directory structure:
-└── TODO _APP/
-    ├── README.md
-    ├── app.js
-    ├── gitignore
-    ├── package-lock.json
-    ├── package.json
-    ├── server.js
-    ├── .gitignore
-    ├── config/
-    │   └── db.js
-    ├── controllers/
-    │   ├── todoControllers.js
-    │   └── userControllers.js
-    ├── middlewares/
-    │   └── auth.js
-    ├── models/
-    │   ├── Todo.js
-    │   └── User.js
-    ├── public/
-    │   └── css/
-    │       └── style.css
-    ├── routes/
-    │   ├── todoRoutes.js
-    │   └── userRoutes.js
-    ├── utils/
-    │   └── generateToken.js
-    └── views/
-        ├── home.ejs
-        ├── login.ejs
-        └── register.ejs
-
-// );
-
-// export default app;
-
-// ----------------------------------------------------------------------------------------------------------------------------
