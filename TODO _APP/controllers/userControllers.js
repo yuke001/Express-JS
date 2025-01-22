@@ -19,6 +19,11 @@ export const register = async (req, res, next) => {
         })
         //generate token
         let token=await generateToken(newUser._id);
+
+        // store token in cookie
+        res.cookir("token",`Bearer ${token}`)
+
+
         //sending response
         // res.status(201).json({newUser,token});
         res.redirect("/api/v1/todo")
@@ -48,4 +53,11 @@ export const login = async (req, res, next) => {
     }catch(err){
         next(err)
     }
+}
+
+export const getLoginForm=(req,res)=>{
+    res.render("login")
+}
+export const getRegisterForm=(req,res)=>{
+    res.render("register")
 }

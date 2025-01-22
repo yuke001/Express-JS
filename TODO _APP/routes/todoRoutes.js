@@ -7,17 +7,19 @@ import {
   deleteTodo,
 } from "../controllers/todoControllers.js";
 
+import { auth } from "../middlewares/auth.js";
+
 let router = express.Router();
 
-router.post("/", postTodo);
+router.post("/",auth, postTodo);
 
-router.get("/", getTodos);
+router.get("/", auth,getTodos);
 
-router.get("/:id", getTodo);
+router.get("/:id",auth, getTodo);
 
-router.put("/:id", putTodo);
+router.put("/:id",auth, putTodo);
 
-router.delete("/:id", deleteTodo);
+router.delete("/:id", auth,deleteTodo);
 
 // router.route("/").get(getTodos).post(postTodo);
 // router.route("/:id").get(getTodo).put(putTodo).delete(deleteTodo);
