@@ -11,15 +11,15 @@ import { auth } from "../middlewares/auth.js";
 
 let router = express.Router();
 
-router.post("/",auth, postTodo);
+router.post("/", auth, postTodo);
 
-router.get("/", auth,getTodos);
+router.get("/", auth, getTodos);
 
-router.get("/:id",auth, getTodo);
+router.get("/:id", auth, getTodo);
 
-router.put("/:id",auth, putTodo);
+router.put("/:id", auth, putTodo);
 
-router.delete("/:id", auth,deleteTodo);
+router.delete("/:id", auth, deleteTodo);
 
 // router.route("/").get(getTodos).post(postTodo);
 // router.route("/:id").get(getTodo).put(putTodo).delete(deleteTodo);
