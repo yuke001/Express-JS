@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose"
 
 // model
 
@@ -12,6 +12,13 @@ let todoSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
+
+    user:{
+      type:Schema.Types.ObjectId,
+      ref:"user",
+      required:true
+    }
   },
   {
     timestamps: true,

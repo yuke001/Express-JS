@@ -1,11 +1,14 @@
 import Todo from "../models/Todo.js";
 
 const postTodo = async (req, res) => {
+
+  console.log(req.userId);
+  
   let { todoName } = req.body;
 
   try {
     if (!todoName) {
-      return res.status(400).send("todo name can't be empty");
+      throw new Error("todo name cant be empty")
     }
     // let newTodo = await Todo.create({
     //   todoName: todoName,
@@ -13,26 +16,28 @@ const postTodo = async (req, res) => {
 
     await Todo.create({
       todoName: todoName,
+      user:req?.userId
     });
     // res.status(201).send(newTodo);
 
     // for show the todos in the home page
     res.redirect("/api/v1/todo");
   } catch (error) {
-    res.status(401).send(error.message);
+    next(error)
   }
 };
 
 const getTodos = async (req, res) => {
   try {
-    let todos = await Todo.find();
+    // let todos = await Todo.find();
+    let todos = await Todo.find({user:req?.userId})
     // res.status(200).send(todos);
 
     // for show the todos in the home page
     res.render("home", { todos });
 
   } catch (error) {
-    res.status(400).send(error.message);
+    next(error)
   }
 };
 
@@ -41,7 +46,7 @@ const getTodo = async (req, res) => {
     let todos = await Todo.findById();
     res.status(200).send(todos);
   } catch (error) {
-    res.status(400).send(error.message);
+    next(error)
   }
 };
 
@@ -61,7 +66,7 @@ const putTodo = async (req, res) => {
     res.redirect("/api/v1/todo");
     // res.status(200).send(updatedTodo);
   } catch (error) {
-    res.status(400).send(error.message);
+    next(error)
   }
 };
 
@@ -74,7 +79,7 @@ const deleteTodo = async (req, res) => {
     // res.status(200).send("Todo deleted successfully");
     res.redirect("/api/v1/todo");
   } catch (error) {
-    res.status(400).send(error.message);
+    next(error)
   }
 };
 
