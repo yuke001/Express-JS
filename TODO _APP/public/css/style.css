@@ -1,23 +1,42 @@
-/* Global reset for margins, paddings, and box-sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styling */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f0f4f8; /* Light background */
+  background-color: #f0f4f8; 
   color: #333;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
   padding: 20px;
 }
 
-/* Main container */
+nav {
+    background-color: #27b6c2;
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-container h1{
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+
 main {
   width: 100%;
   max-width: 800px;
@@ -25,9 +44,9 @@ main {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+    margin-top: 20px;
 }
 
-/* Header */
 .container h1 {
   font-size: 2rem;
   text-align: center;
@@ -35,7 +54,6 @@ main {
   margin-bottom: 20px;
 }
 
-/* Form styles */
 form {
   display: flex;
   justify-content: space-between;
@@ -66,7 +84,6 @@ form button:hover {
   background-color: #1a8791;
 }
 
-/* Task list table */
 .list {
   margin-top: 20px;
 }
@@ -76,7 +93,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   text-align: center;
   padding: 10px;
   border: 1px solid #ddd;
@@ -110,32 +128,38 @@ button[type="submit"]:hover {
   background-color: #1a8791;
 }
 
-button[type="submit"].completed {
-  background-color: #4caf50; /* Green for completed */
+.completed {
+  background-color: #4caf50; 
 }
 
-button[type="submit"].completed:hover {
+.completed:hover {
   background-color: #388e3c;
 }
 
-button[type="submit"].not-completed {
-  background-color: #ff5722; /* Red for not completed */
+.not-completed {
+  background-color: #ff5722; 
 }
 
-button[type="submit"].not-completed:hover {
+.not-completed:hover {
   background-color: #e64a19;
 }
 
-button.delete {
-  background-color: #f44336; /* Red for delete */
+.delete {
+  background-color: #f44336; 
 }
 
-button.delete:hover {
+.delete:hover {
   background-color: #d32f2f;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
+    nav{
+        padding: 10px 0;
+    }
+    .nav-container h1{
+        font-size: 1.2rem;
+    }
+
   main {
     padding: 15px;
   }
@@ -144,7 +168,8 @@ button.delete:hover {
     font-size: 0.9rem;
   }
 
-  th, td {
+  th,
+  td {
     font-size: 0.8rem;
   }
 
