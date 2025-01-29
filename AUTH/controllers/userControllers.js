@@ -5,8 +5,10 @@ import generateToken from '../utils/generateToken.js';
 export const register = async (req, res, next) => {
     try{
     let { username, email, password, confirmPassword } = req.body;
+   
     console.log(req.file);
-        //verify user is in db already
+   
+    //verify user is in db already
         let existingUser=await User.findOne({email})
         if(existingUser){
            throw new Error("User already exists,Please Login")
